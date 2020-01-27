@@ -1,36 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Welcome to Nashville</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Welcome to Nashville</h1>
+      <h1>Welcome to Nashville</h1>
     </header>
     <section id="search-box">
-        <h2>What would you like to see today?</h2>
-        <div id="search">
-
-        </div>
+      <h2>Search for stuff to do today</h2>
+      <div id="parksSearch">
+        <input
+          type="text"
+          id="search-criteria"
+          placeholder="parks by feature"
+        />
+        <button id="parkSearch-btn">Search</button>
+      </div>
+      <div id="publicArtSearch">
+        <input
+          type="text"
+          id="search-criteria"
+          placeholder="public art by description"
+        />
+        <button id="artSearch-btn">Search</button>
+      </div>
+      <div id="restSearch">
+        <input
+          type="text"
+          id="search-criteria"
+          placeholder="nashville restaurants"
+        />
+        <button id="restSearch-btn">Search</button>
+      </div>
+      <div id="concertSearch">
+        <input
+          type="text"
+          id="search-criteria"
+          placeholder="concerts search"
+        />
+        <button id="concertSearch-btn">Search</button>
+      </div>
     </section>
 
-
     <section id="results-box">
-        <h2>Search Results</h2>
-        <div id="results">
-
-        </div>
+      <h2>Search Results</h2>
+      <div id="results"></div>
     </section>
 
     <section id="itinerary-box">
-        <h2>Your itinerary</h2>
-        <div id="user-itinerary"></div>
+      <h2>My itinerary</h2>
+      <div id="user-itinerary">
+          <section id="parkItinerary">Park:</section>
+          <section id="artItinerary">Art:</section>
+          <section id="restaurantItinerary">Restaurants:</section>
+          <section id="concertItinerary">Concert:</section>
+      </div>
     </section>
 
     <script src="scripts/universalFetch.js"></script>
