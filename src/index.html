@@ -15,12 +15,24 @@
     <section id="search-box">
       <h2>Search for stuff to do today</h2>
       <div id="parksSearch">
-        <input
+        <!-- <input
           type="text"
           id="search-criteria"
           placeholder="parks by feature"
-        />
+        /> -->
+        <select name="parkOptions" id="searchCriteriaParks">
+          <option value="nature_center">Nature Center</option>
+          <option value="playground">Playground</option>
+          <option value="ada_accessible">Accessible</option>
+          <option value="resrooms_available">Restrooms</option>
+          <option value="picnic_shelters">Picnic Shelters</option>
+          <option value="dog_park">Dog Park</option>
+        </select>
         <button id="parkSearch-btn">Search</button>
+        <!-- <select name="parkOptions" id="">
+          <option value="nature_center">Nature Center</option>
+          <option value="playground">Playground</option>
+        </select> -->
       </div>
       <div id="publicArtSearch">
         <input
@@ -69,7 +81,7 @@
     <script src=""></script>
     <script src=""></script>
     <script src=""></script>
-    <script src=""></script>
+    <script src="scripts/APIs/parksAPI/data.js"></script>
     <script src="scripts/domManipulator.js"></script>
 </body>
 
