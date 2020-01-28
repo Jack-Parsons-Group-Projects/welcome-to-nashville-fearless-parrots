@@ -23,6 +23,8 @@ const ApIfetch = (searchParam) => {
     fetch (apiUrl)
     .then (resp => resp.json())
     .then (allParks => {
+
+        htmlContainer.innerHTML = " "
         allParks.forEach(park => {
             console.log(park[searchParam])
             
