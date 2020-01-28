@@ -5,3 +5,4 @@ const APImanager = {
         return fetch(url).then(resp => resp.json)
     }
 }
+
