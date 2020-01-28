@@ -1,4 +1,5 @@
 const restaurantSearchButton = document.querySelector("#restSearch-btn")
+const saveButton = document.querySelector(".restaurant-save-button")
 
 const searchResults = document.querySelector("#results")
 
@@ -15,4 +16,3 @@ restaurantSearchButton.addEventListener("click", event => {
         });
     })
 })
-
