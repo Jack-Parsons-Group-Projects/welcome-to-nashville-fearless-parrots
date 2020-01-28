@@ -14,7 +14,15 @@ artSearchButton.addEventListener("click", event => {
 })
 
 restaurantSearchButton.addEventListener("click", event => {
-    searchZomatoAPI()
+    const restaurantsSearchCriteria = document.querySelector("#rest-search-criteria").value
+    searchZomatoAPI(restaurantsSearchCriteria)
+    .then(parsedRestaurants => {
+        const allRestaurants = parsedRestaurants.restaurants
+
+        allRestaurants.forEach(restaurant => {
+            searchResults.innerHTML += restaurantResultMaker(restaurant.restaurant.name, restaurant.restaurant.location.locality)
+        });
+    })
 })
 
 concertSearchButton.addEventListener("click", event => {
