@@ -24,6 +24,19 @@ const concertsHTMLFactory = (concert) => {
 
 
 
+const concertHTML = (concertName, concertDate, concertTime) => {
+    return `
+      <div class="concert-search-result">
+      <h3>${concertName}</h3>
+      <p>${concertDate}</p>
+      <p>${concertTime}</p>
+      <button class="concert-save-button">Save button</button>
+      </div>
+      `;
+  };
+  
+
+
 
 
 const concertSearchButton = document.querySelector("#concertSearch-btn")
@@ -46,6 +59,21 @@ concertSearchButton.addEventListener("click", event => {
 //     const concert = concertSearchResults[i];
 //     concertSearchResult.innerHTML += this.concertsHTMLFactory(concert, i);
 //   }
+
+
+
+
+
+const saveConcertEventHandler = (event) => {
+    const buttonId = event.target.id;
+    const index = buttonId.split('-')[1];
+
+const 
+
+
+
+
+
 
 console.log(concertSearchButton)
 
