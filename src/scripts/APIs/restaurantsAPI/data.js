@@ -5,3 +5,32 @@ const searchZomatoAPI = (searchString) => {
         .then(restaurants => restaurants.json())
 }
 
+// Jack's Restaurant API Code //
+
+const restaurantSearchButton = document.querySelector("#restSearch-btn")
+const restaurantSaveButton = document.querySelector(".restaurant-save-button")
+const restaurantResultBox = document.querySelector("#restaurantItinerary")
+const searchResults = document.querySelector("#results")
+
+// Restaurant Search Feature //
+
+restaurantSearchButton.addEventListener("click", event => {
+    const restaurantsSearchCriteria = document.querySelector("#rest-search-criteria").value
+    searchZomatoAPI(restaurantsSearchCriteria)
+    .then(parsedRestaurants => {
+        const allRestaurants = parsedRestaurants.restaurants
+
+        searchResults.innerHTML = " "
+
+        allRestaurants.forEach(restaurant => {
+            searchResults.innerHTML += restaurantResultMaker(restaurant.restaurant.name, restaurant.restaurant.location.locality)
+        });
+    })
+})
+
+// Restaurant Save To Itinerary Feature //
+
+restaurantSaveButton.addEventListener("click", event => {
+    restaurantResultBox.innerHTML += restaurant.restaurant.name
+})
+
