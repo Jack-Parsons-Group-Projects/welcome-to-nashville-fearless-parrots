@@ -51,6 +51,8 @@ const searchResultsDomManager = {
   }
 };
 
+
+//Move this to the domManipulator.js
 artSearchEventManager.addArtSearchEventListener();
 
 //Save function
