@@ -30,11 +30,11 @@ const artSearchEventManager = {
 const searchResultsDomManager = {
   publicArtFactory(artObj, index) {
     return `
-        <h2>${artObj.artwork}</h2>
+        <h2 id="artWork--${index}">${artObj.artwork}</h2>
         <h3>${artObj.last_name}, ${artObj.first_name}</h3>
         <p>${artObj.description}</p>
         <button class="art-save-button" id="save--${index}">Save button</button>
-        `;
+        `
   },
   renderSearchResults(searchResults) {
     console.log("renderSearchResults");
@@ -46,19 +46,19 @@ const searchResultsDomManager = {
       const artWork = searchResults[i];
       container.innerHTML += this.publicArtFactory(artWork, i);
     }
+    addArtSaveEventListener()
   }
 };
 
-//
 artSearchEventManager.addArtSearchEventListener();
 
 //Save function
 const saveArtEventHandler = event => {
   const artItineraryBox = document.getElementById("artItinerary");
   const buttonId = event.target.id;
-  const index = buttonId.split("_")[1];
+  const index = buttonId.split("--")[1];
 
-  const individualArt = document.querySelector(`#h2_${index}`);
+  const individualArt = document.querySelector(`#artWork--${index}`);
   artItineraryBox.innerHTML = `Art: ${individualArt.outerText}`;
 };
 
