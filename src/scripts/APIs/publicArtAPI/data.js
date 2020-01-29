@@ -11,8 +11,6 @@ const artApiManager = {
 //Event listener on search button
 const artSearchEventManager = {
   addArtSearchEventListener() {
-    console.log("addArtSearchEventListener");
-
     const artSearchButton = document.getElementById("artSearch-btn");
 
     artSearchButton.addEventListener("click", () => {
@@ -51,10 +49,22 @@ const searchResultsDomManager = {
   }
 };
 
-
-//Move this to the domManipulator.js
+//
 artSearchEventManager.addArtSearchEventListener();
 
 //Save function
+const saveArtEventHandler = event => {
+  const artItineraryBox = document.getElementById("artItinerary");
+  const buttonId = event.target.id;
+  const index = buttonId.split("_")[1];
 
+  const individualArt = document.querySelector(`#h2_${index}`);
+  artItineraryBox.innerHTML = `Art: ${individualArt.outerText}`;
+};
 
+const addArtSaveEventListener = () => {
+  const artSaveButtons = document.querySelectorAll(".art-save-button");
+  artSaveButtons.forEach(artSaveButton => {
+    artSaveButton.addEventListener("click", saveArtEventHandler);
+  });
+};
