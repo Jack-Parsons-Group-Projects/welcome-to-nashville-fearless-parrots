@@ -10,12 +10,17 @@
     border: 1px solid black;
     width: 50%;
     font-size: 15px;
-    padding: 5%
+    padding: 2%;
+}
+
+.button-rounded {
+    border-radius: 5px;
 }
 
 .restaurant-save-button {
     justify-content: center;
     width: 20%;
+    border: 1px solid black;
 }
 
 #results-box {

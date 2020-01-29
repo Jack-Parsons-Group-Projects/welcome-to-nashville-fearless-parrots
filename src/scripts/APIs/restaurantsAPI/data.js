@@ -20,7 +20,7 @@ const restaurantResultMaker = (name, locality, id) => {
     <div class="restaurant-search-result" id="restarurant-search-result_${id}">
     <h3 id=h3_${id}>${name}</h3>
     <p>${locality}</p>
-    <button class="restaurant-save-button" id="restarurant-search-result_${id}_save">Save</button>
+    <button class="restaurant-save-button button-rounded" id="restarurant-search-result_${id}_save">Save</button>
     </div>`
 }
 
