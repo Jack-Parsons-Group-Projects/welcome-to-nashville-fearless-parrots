@@ -5,5 +5,26 @@ parkButton.addEventListener("click", (event) => {
     console.log(searchParam)
   
     ApIfetch(searchParam)
+
+    
     
 })
+
+
+
+
+// document.body.addEventListener("click", (event) => {
+//     if (event.target.matches("span")) {
+//         saveButtonMaker()
+//     }
+    
+// } )
+
+// const saveButtonMaker = () => {
+
+//     const parkItineraryButton = document.getElementById("parkSaveBtn")
+//     parkItineraryButton.addEventListener("click", (event) => {
+//         parkItineraryContainer.innerHTML += "A Park"
+//     })
+// }
+
