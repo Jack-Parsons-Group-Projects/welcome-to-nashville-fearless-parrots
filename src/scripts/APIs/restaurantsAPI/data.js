@@ -1,3 +1,5 @@
+// Jack's Restaurant API Code //
+
 const searchZomatoAPI = (searchString) => {
     const zomatoAPIURL = `https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&start=first&sort=rating&apikey=${zomatoAPIKey}&q=${searchString}`
 
@@ -5,32 +7,55 @@ const searchZomatoAPI = (searchString) => {
         .then(restaurants => restaurants.json())
 }
 
-// Jack's Restaurant API Code //
+// Restaurant Global DOM variables //
 
 const restaurantSearchButton = document.querySelector("#restSearch-btn")
-const restaurantSaveButton = document.querySelector(".restaurant-save-button")
-const restaurantResultBox = document.querySelector("#restaurantItinerary")
-const searchResults = document.querySelector("#results")
+const restaurantItineraryBox = document.querySelector("#restaurantItinerary")
+const restaurantSearchResults = document.querySelector("#results")
+
+// Restaraunt Render to HTML function //
+
+const restaurantResultMaker = (name, locality, id) => {
+    return `
+    <div class="restaurant-search-result" id="restarurant-search-result_${id}">
+    <h3 id=h3_${id}>${name}</h3>
+    <p>${locality}</p>
+    <button class="restaurant-save-button" id="restarurant-search-result_${id}_save">Save</button>
+    </div>`
+}
 
 // Restaurant Search Feature //
 
 restaurantSearchButton.addEventListener("click", event => {
     const restaurantsSearchCriteria = document.querySelector("#rest-search-criteria").value
     searchZomatoAPI(restaurantsSearchCriteria)
-    .then(parsedRestaurants => {
-        const allRestaurants = parsedRestaurants.restaurants
+        .then(parsedRestaurants => {
+            const allRestaurants = parsedRestaurants.restaurants
 
-        searchResults.innerHTML = " "
+            restaurantSearchResults.innerHTML = " "
 
-        allRestaurants.forEach(restaurant => {
-            searchResults.innerHTML += restaurantResultMaker(restaurant.restaurant.name, restaurant.restaurant.location.locality)
-        });
-    })
+            allRestaurants.forEach((restaurant, index) => {
+                restaurantSearchResults.innerHTML += restaurantResultMaker(restaurant.restaurant.name, restaurant.restaurant.location.locality, index)
+            });
+            addRestaurantSaveEventListener()
+        })
 })
 
 // Restaurant Save To Itinerary Feature //
 
-restaurantSaveButton.addEventListener("click", event => {
-    restaurantResultBox.innerHTML += restaurant.restaurant.name
-})
+const saveRestaurantEventHandler = (event) => {
+    const buttonId = event.target.id;
+    const index = buttonId.split("_")[1];
+
+    const individualRestaurants = document.querySelector(`#h3_${index}`)
+    restaurantItineraryBox.innerHTML = `Restaruant: ${individualRestaurants.outerText}`
+}
+
+const addRestaurantSaveEventListener = () => {
+    const restaurantSaveButtons = document.querySelectorAll(".restaurant-save-button")
+    restaurantSaveButtons.forEach(restaurantSaveButton => {
+        restaurantSaveButton.addEventListener("click", saveRestaurantEventHandler);
+        })
+    }
+
 

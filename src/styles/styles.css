@@ -4,13 +4,18 @@
     border: 1px solid black;
 }
 
-.search-result {
+.restaurant-search-result {
     display: flex;
     flex-direction: column;
     border: 1px solid black;
     width: 50%;
     font-size: 15px;
     padding: 5%
+}
+
+.restaurant-save-button {
+    justify-content: center;
+    width: 20%;
 }
 
 #results-box {
