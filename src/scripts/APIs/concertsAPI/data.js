@@ -1,4 +1,4 @@
-const concertsApi = {
+const concertsApiFetch = {
     searchForConcerts: (searchConcert) => {
         return fetch(`http://app.ticketmaster.com/discovery/v1/events.json?apikey=${concertsAPIKey}&keyword=${searchConcert}`)
             .then(response => response.json())
@@ -6,16 +6,17 @@ const concertsApi = {
     }
 };
 
-concertsApi.searchForConcerts(`rock`)
-.then(concertsFromAPI => {
-    console.log(concertsFromAPI);
-});
+concertsApiFetch.searchForConcerts(`rock`)
+    .then(concertsFromAPI => {
+        console.log(concertsFromAPI);
+    });
 
-const concertsAPI = (concert) => {
+const concertsHTMLFactory = (concert) => {
     return `
       <section id="search-box">
-        <div>Title: ${concert.performer}</div>
-        <div>Date: ${concert.showDate}</div>
+        <div>Title: ${concert.name}</div>
+        <div>Date: ${concert.date}</div>
+        <div>Time: ${concert.time}</div>
       </section>
     `;
 };
@@ -25,14 +26,28 @@ const concertsAPI = (concert) => {
 
 
 
+const concertSearchButton = document.querySelector("#concertSearch-btn")
+// const concertSaveButton = document.querySelector(".concertSave-button")
+
+concertSearchButton.addEventListener("click", event => {
+    const concertSearchCriteria = document.querySelector("#concert-search-criteria").value
+    const concertSearchResults = document.querySelector("#results")
+    concertsApiFetch.searchForConcerts(concertSearchCriteria)
+        .then(concertsAPI => {
+            const concerts = concertsAPI._embedded.events
+            concertSearchResults.innerHTML = " "
+            concerts.forEach(concert => {
+                concertSearchResults.innerHTML += concertsHTMLFactory(concert)
+            });
+        })
+})
+
+// for (let i=0; i<concertSearchResults.length; i++) {
+//     const concert = concertSearchResults[i];
+//     concertSearchResult.innerHTML += this.concertsHTMLFactory(concert, i);
+//   }
+
+console.log(concertSearchButton)
 
 
 
-
-// const renderConcerts = (concerts) => {
-//     const container = document.querySelector("#concertsSearch");
-//     concerts.forEach(concert => {
-//         const concertHtml = HTMLFactory(concert);
-//         container.innerHTML += concertHtml;
-//     });
-// };
