@@ -8,9 +8,9 @@ const resultsHtml = parksFromAPI => {
     const addressObject = JSON.parse(parksFromAPI.mapped_location.human_address)
     return `
         <section class = "parkResults" id = "parkResultsId-${parksFromAPI.park_name}">
-            <p>${parksFromAPI.park_name}</p>
+            <h3>${parksFromAPI.park_name}</h3>
             <p>${addressObject.address}, ${addressObject.city}, ${addressObject.state}, ${addressObject.zip}</p>
-            <button class = "parkSaveBtn" id = "parkSaveBtnId-${parksFromAPI.park_name}">Save</button>
+            <button class = "parkSaveBtn button-rounded buttonSize" id = "parkSaveBtnId-${parksFromAPI.park_name}">Save</button>
         </section>
     
     ` 

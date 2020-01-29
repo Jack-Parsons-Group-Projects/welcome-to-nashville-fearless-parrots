@@ -1,7 +1,14 @@
 .parkResults {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    width: 50%;
+    padding: 2%;
+    /* justify-content: space-between; */
     border: 1px solid black;
+}
+
+.buttonSize {
+    width: 20%;
 }
 
 .restaurant-search-result {
