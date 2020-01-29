@@ -4,8 +4,6 @@ const htmlContainer = document.getElementById("results")
 
 const parkItineraryContainer = document.getElementById("parkItinerary")
 
-
-
 const resultsHtml = parksFromAPI => {
     const addressObject = JSON.parse(parksFromAPI.mapped_location.human_address)
     return `
@@ -15,8 +13,7 @@ const resultsHtml = parksFromAPI => {
             <button class = "parkSaveBtn" id = "parkSaveBtnId-${parksFromAPI.park_name}">Save</button>
         </section>
     
-    `
- 
+    ` 
 }
 
 const ApIfetch = (searchParam) => {
@@ -48,18 +45,10 @@ const saveEventHandler = (event) => {
 
     console.log(buttonId)
 
-    
-  
     const individualParks = document.getElementById(`parkResultsId-${index}`)
     parkItineraryContainer.innerHTML += " " + index
     console.log(individualParks)
-    // const routeDiv = document.getElementById(`routename-${index}`);
-    // const stopDiv = document.getElementById(`stopname-${index}`);
-    // const stopText = `${routeDiv.textContent.trim()}: ${stopDiv.textContent.trim()}`;
-    // alert(`You like\n${stopText}`);
-  
-    // const busStopSection = document.getElementById(`busstop-${index}`);
-    // busStopSection.classList.add('favorite');
+    
   };
 
 const saveEventManager = {
@@ -77,11 +66,3 @@ const saveEventManager = {
       }
     }
   }
-
-  // const saveButtonMaker = () => {
-
-//     const parkItineraryButton = document.getElementById("parkSaveBtn")
-//     parkItineraryButton.addEventListener("click", (event) => {
-//         parkItineraryContainer.innerHTML += "A Park"
-//     })
-// }
