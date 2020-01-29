@@ -52,3 +52,7 @@ const searchResultsDomManager = {
 };
 
 artSearchEventManager.addArtSearchEventListener();
+
+//Save function
+
+
