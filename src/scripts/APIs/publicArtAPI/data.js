@@ -35,7 +35,7 @@ const searchResultsDomManager = {
         console.log("publicArtFactory");
 
         return `
-        <section id="artwork-${index}"
+        test
         `;
     },
     renderSearchResults(searchResults) {
