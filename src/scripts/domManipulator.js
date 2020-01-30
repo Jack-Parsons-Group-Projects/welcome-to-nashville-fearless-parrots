@@ -1,13 +1,13 @@
 // Mike's code //
 
 parkButton.addEventListener("click", (event) => {
-    const searchParam =document.getElementById("searchCriteriaParks").value
-    console.log(searchParam)
-  
+    const searchParam = document.getElementById("searchCriteriaParks").value
+
+
     ApIfetch(searchParam)
 
-    
-    
+
+
 })
 
 
@@ -17,7 +17,7 @@ parkButton.addEventListener("click", (event) => {
 //     if (event.target.matches("span")) {
 //         saveButtonMaker()
 //     }
-    
+
 // } )
 
 // const saveButtonMaker = () => {
