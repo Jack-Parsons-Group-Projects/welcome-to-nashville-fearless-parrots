@@ -48,7 +48,7 @@ const saveRestaurantEventHandler = (event) => {
     const index = buttonId.split("_")[1];
 
     const individualRestaurants = document.querySelector(`#h3_${index}`)
-    restaurantItineraryBox.innerHTML = `Restaruant: ${individualRestaurants.outerText}`
+    restaurantItineraryBox.innerHTML = `Restaurant: ${individualRestaurants.outerText}`
 }
 
 const addRestaurantSaveEventListener = () => {
