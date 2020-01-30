@@ -46,7 +46,7 @@
     
 }
 
-#title {
+.title {
     font-weight: bold;
     font-size: 25px;
     font-style: italic;
@@ -54,9 +54,7 @@
 
 .concert-save-button {
     justify-content: center;
-    /* border-radius: 5%; */
-    background-color: lightsteelblue;
+    border-radius: 5%;
     border: 2px solid black;
     font-weight: bold;
-    
 }

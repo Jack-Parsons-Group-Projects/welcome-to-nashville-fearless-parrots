@@ -8,30 +8,24 @@ const concertsApiFetch = {
   }
 };
 
-concertsApiFetch.searchForConcerts(`concerts`).then(concertsFromAPI => {
-  console.log(concertsFromAPI);
-});
-
-
 
 
 
 // Render To DOM Function
 
-const concertsHTMLFactory = (concert, date, time) => {
+const concertsHTMLFactory = (concert, index) => {
   return `
-      <section id="search-box">
+      <section>
       <div class="concert-search-result">
-      <div id="concert-search-result">
-        <div id="title">Title: ${concert.name}</div>
-        <div>Date: ${concert.date}</div>
-        <div>Time: ${concert.time}</div>
-        <button class="concert-save-button">Save</button>
+      <div>
+        <div class="title" id="concertTitle--${index}">${concert.name}</div>
+        <div>Date: ${concert.dates.start.localDate}</div>
+        <div>Time: ${concert.dates.start.localTime}</div>
+        <button class="concert-save-button" id="concert-save-button--${index}">Save</button>
         </div>
       </section>
     `;
 };
-
 
 
 
@@ -41,42 +35,34 @@ const concertsHTMLFactory = (concert, date, time) => {
 const concertSearchButton = document.querySelector("#concertSearch-btn");
 
 concertSearchButton.addEventListener("click", event => {
-  const concertSearchCriteria = document.querySelector(
-    "#concert-search-criteria"
-  ).value;
+  const concertSearchCriteria = document.querySelector("#concert-search-criteria").value;
   const concertSearchResults = document.querySelector("#results");
   concertsApiFetch
     .searchForConcerts(concertSearchCriteria)
     .then(concertsAPI => {
+        saveConcertEventManager.removeSaveEventListeners()
       const concerts = concertsAPI._embedded.events;
-      concertSearchResults.innerHTML = " ";
-      concerts.forEach(concert => {
-        concertSearchResults.innerHTML += concertsHTMLFactory(concert);
-      });
+      for (let i = 0; i < concerts.length; i++) {
+        const concert = concerts[i];
+        concertSearchResults.innerHTML += concertsHTMLFactory(concert, i);
+        saveConcertEventManager.addSaveEventListeners();
+      }
     });
 });
-
-// for (let i=0; i<concertSearchResults.length; i++) {
-//     const concert = concertSearchResults[i];
-//     concertSearchResult.innerHTML += this.concertsHTMLFactory(concert, i);
-//   }
-
 
 
 
 
 // Save To My Itinerary
 
-const concertSaveButton = document.querySelector(".concert-save-button");
+const itineraryResult = document.querySelector("#concertItinerary")
 
-const concertSaveEventHandler = (event) => {
+const concertSaveEventHandler = event => {
   const buttonId = event.target.id;
-  const concert = buttonId.split("_")[1];
-
-  const concertsHTMLFactory = document.getElementById(`concert-search-result"-${concert}`");
-    concertSearchResults.innerHTML += concertsHTMLFactory(concert);
+  const index = buttonId.split("--")[1];
+  const concertName = document.getElementById(`concertTitle--${index}`);
+  itineraryResult.innerHTML = `Concert: ${concertName.innerHTML}`
 };
-
 const saveConcertEventManager = {
   addSaveEventListeners() {
     const concertButtons = document.querySelectorAll(".concert-save-button");
@@ -91,6 +77,3 @@ const saveConcertEventManager = {
     }
   }
 };
-
-
-
