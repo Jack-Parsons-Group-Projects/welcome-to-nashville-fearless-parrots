@@ -42,6 +42,7 @@ concertSearchButton.addEventListener("click", event => {
     .then(concertsAPI => {
         saveConcertEventManager.removeSaveEventListeners()
       const concerts = concertsAPI._embedded.events;
+      concertSearchResults.innerHTML = " "
       for (let i = 0; i < concerts.length; i++) {
         const concert = concerts[i];
         concertSearchResults.innerHTML += concertsHTMLFactory(concert, i);
@@ -73,7 +74,7 @@ const saveConcertEventManager = {
   removeSaveEventListeners() {
     const concertButtons = document.querySelectorAll(".concert-save-button");
     for (let concertButton of concertButtons) {
-      concertButton.removeEventListener("click", favoriteEventHandler);
+      concertButton.removeEventListener("click", concertSaveEventHandler);
     }
   }
 };
