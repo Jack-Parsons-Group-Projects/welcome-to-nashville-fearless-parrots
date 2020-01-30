@@ -29,7 +29,7 @@ const restaurantResultMaker = (name, locality, id) => {
 restaurantSearchButton.addEventListener("click", event => {
     const restaurantsSearchCriteria = document.querySelector("#rest-search-criteria").value
     searchZomatoAPI(restaurantsSearchCriteria)
-        .then(parsedRestaurants => {cod
+        .then(parsedRestaurants => {
             const allRestaurants = parsedRestaurants.restaurants
 
             restaurantSearchResults.innerHTML = " "

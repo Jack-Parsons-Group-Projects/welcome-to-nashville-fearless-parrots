@@ -19,7 +19,7 @@ const artSearchEventManager = {
       const searchCriteria = input.value;
       const searchResultPromise = artApiManager.searchPublicArt(searchCriteria);
       searchResultPromise.then(searchResults => {
-        console.log(searchResults);
+        
         searchResultsDomManager.renderSearchResults(searchResults);
       });
     });
@@ -37,7 +37,7 @@ const searchResultsDomManager = {
         `
   },
   renderSearchResults(searchResults) {
-    console.log("renderSearchResults");
+    
 
     const container = document.querySelector("#results");
     container.innerHTML = "";
